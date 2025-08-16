@@ -19,7 +19,9 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 # ========= ตั้งค่า Discord =========
 app_prefix = "!"
-TOKEN = os.getenv("DISCORD_TOKEN") or "MTQwNDE2MTcxMTYyMzI0MTc1OQ.GIHFcE.sJ71c7bkJd5PR3SOhp1e0KYaS5tI1daASeYOIw"   # แนะนำตั้งเป็น ENV
+TOKEN = os.getenv("DISCORD_TOKEN", "")
+if not TOKEN:
+    raise RuntimeError("ENV DISCORD_TOKEN ไม่ได้ตั้งค่า")
 
 # ========= ตั้งค่า Google Sheet =========
 SPREADSHEET_ID   = os.getenv("SPREADSHEET_ID", "1Ps_sLYIA3j9WWyrP7kLN4g-kPaN_rPBTqSmsxzxzarQ")  # <- ไอดีไฟล์ใหม่ของคุณ
